@@ -14,6 +14,11 @@ class ProfileViewController: BaseViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        self.view.backgroundColor = UIColor.cyanColor()
+        
+        
+        
     }
 
     override func didReceiveMemoryWarning() {

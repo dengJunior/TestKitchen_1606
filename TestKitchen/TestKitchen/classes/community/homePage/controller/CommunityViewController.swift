@@ -8,13 +8,49 @@
 
 import UIKit
 
-class CommunityViewController: BaseViewController {
+class CommunityViewController: BaseViewController /*, KTCDownloadDelegate*/{
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        self.view.backgroundColor = UIColor.yellowColor()
+        
         // Do any additional setup after loading the view.
     }
+    
+    //methodName=SceneHome&token=&user_id=&version=4.5
+    func downloadRecommendData(){
+    
+    
+        let dict = ["methodName":"SceneHome","token":"","user_id":"","version":"4.5"]
+        
+        
+        
+        let downloader = KTCDownloader()
+        
+//        downloader.delegate = self
+        downloader.postWithUrl(kHostUrl, paras: dict)
+        
+        
+        
+        
+        
+    
+    
+    
+    
+    
+    
+    
+    
+    }
+    
+    
+    
+    
+    
+    
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -33,3 +69,7 @@ class CommunityViewController: BaseViewController {
     */
 
 }
+
+
+
+extension CommunityViewController{}

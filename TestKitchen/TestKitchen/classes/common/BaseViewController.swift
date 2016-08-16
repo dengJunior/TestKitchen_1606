@@ -14,7 +14,36 @@ class BaseViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        
+        
+        self.view.backgroundColor = UIColor.whiteColor()
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -31,5 +60,118 @@ class BaseViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+
+}
+
+
+
+
+
+extension BaseViewController{
+
+    
+    
+    func addNavTitle(title: String){
+    
+        
+        
+        let titleLabel = UILabel.createLabel(title, font: UIFont.boldSystemFontOfSize(24), textAligment: .Center, textColor: UIColor.blackColor())
+
+        
+        navigationItem.titleView = titleLabel
+    
+    
+    
+    
+    
+    
+    
+    
+    }
+
+
+    
+
+
+
+    
+    
+    func addNavBtn(imageName: String, target: AnyObject?, action: Selector, isLeft: Bool ){
+    
+    
+        
+        
+        let btn = UIButton.createBtn(nil, bgImageName: imageName, selectBgImageName:nil, target: self, action: action)
+    
+        btn.frame = CGRectMake(0, 4, 40, 36)
+        
+        let barBtnItem = UIBarButtonItem(customView: btn)
+        
+        
+        if isLeft{
+        
+        
+            navigationItem.leftBarButtonItem = barBtnItem
+        //MARK:-   加载在 视图上了
+        
+        }else{
+        
+        
+        
+            navigationItem.rightBarButtonItem = barBtnItem
+        
+        
+        
+        
+        }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    }
+
+
+
+
+
+
+
+    
+    func addNavBackBtn() {
+        
+        addNavBtn("nav_back_black", target: self, action: #selector(backAction), isLeft: true)
+        
+        
+    }
+
+
+
+
+
+    
+    func backAction(){
+    
+    
+        navigationController?.popViewControllerAnimated(true)
+    
+    
+    }
+
+
+
+
+
+
+
+
 
 }

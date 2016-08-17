@@ -10,21 +10,54 @@ import UIKit
 
 class CookBookViewController: BaseViewController {
 
+    //1
+    private var recommendView: CBRecommendView?
+    
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+    
+        createMyNav()
         
-        self.createMyNav()
+        createHomePageView()
         
         
-        
-        
-        self.downloadRecommendData()
+        downloadRecommendData()
         
         
     }
 
+    
+    func createHomePageView(){
+    
+        self.automaticallyAdjustsScrollViewInsets = false
+        recommendView = CBRecommendView()
+        
+        
+        
+        view.addSubview(recommendView!)
+    
+    
+        
+        recommendView?.snp_makeConstraints( closure: {    [weak self]     (make) in
+            
+            make.edges.equalTo(self!.view).inset(UIEdgeInsetsMake(64, 0, 49, 0))
+            
+            
+        })
+    
+    
+    
+    
+    }
+    
+    
+    
+    
     
     func downloadRecommendData(){
         
@@ -111,6 +144,27 @@ extension CookBookViewController: KTCDownloadDelegate{
         
         
         print(str!)
+        
+        if let jsonData = data{
+        
+        
+            let model = CBRecommendModel.parseModel(jsonData)
+        
+        
+            print("__________________________________________________________________")
+            dispatch_async(dispatch_get_main_queue()) {
+                
+                [weak self] in
+                
+                self!.recommendView?.model = model
+                
+                
+                
+                
+            }
+
+        }
+        
         
         
         

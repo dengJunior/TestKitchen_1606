@@ -72,6 +72,13 @@
 		233C66791D62B9BD00F8CDAE /* search@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 233C66711D62B9BD00F8CDAE /* search@3x.png */; };
 		233C667B1D62BD6900F8CDAE /* KTCDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233C667A1D62BD6900F8CDAE /* KTCDownloader.swift */; };
 		233C66811D62C65500F8CDAE /* CBRecommendModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233C66801D62C65500F8CDAE /* CBRecommendModel.swift */; };
+		23BD22771D63FB9D006272EC /* CBRecommendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BD22761D63FB9D006272EC /* CBRecommendView.swift */; };
+		23BD227A1D63FF46006272EC /* CBRecommendADCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BD22781D63FF46006272EC /* CBRecommendADCell.swift */; };
+		23BD227B1D63FF46006272EC /* CBRecommendADCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23BD22791D63FF46006272EC /* CBRecommendADCell.xib */; };
+		23BD227D1D6407F5006272EC /* UIImageView+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BD227C1D6407F5006272EC /* UIImageView+Util.swift */; };
+		23BD22801D640A27006272EC /* sdefaultImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 23BD227F1D640A27006272EC /* sdefaultImage.png */; };
+		23BD22831D64173C006272EC /* CBRecommendLikeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BD22811D64173C006272EC /* CBRecommendLikeCell.swift */; };
+		23BD22841D64173C006272EC /* CBRecommendLikeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23BD22821D64173C006272EC /* CBRecommendLikeCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -162,6 +169,13 @@
 		233C66711D62B9BD00F8CDAE /* search@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search@3x.png"; sourceTree = "<group>"; };
 		233C667A1D62BD6900F8CDAE /* KTCDownloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KTCDownloader.swift; sourceTree = "<group>"; };
 		233C66801D62C65500F8CDAE /* CBRecommendModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CBRecommendModel.swift; sourceTree = "<group>"; };
+		23BD22761D63FB9D006272EC /* CBRecommendView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CBRecommendView.swift; sourceTree = "<group>"; };
+		23BD22781D63FF46006272EC /* CBRecommendADCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CBRecommendADCell.swift; sourceTree = "<group>"; };
+		23BD22791D63FF46006272EC /* CBRecommendADCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CBRecommendADCell.xib; sourceTree = "<group>"; };
+		23BD227C1D6407F5006272EC /* UIImageView+Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+Util.swift"; sourceTree = "<group>"; };
+		23BD227F1D640A27006272EC /* sdefaultImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sdefaultImage.png; sourceTree = "<group>"; };
+		23BD22811D64173C006272EC /* CBRecommendLikeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CBRecommendLikeCell.swift; sourceTree = "<group>"; };
+		23BD22821D64173C006272EC /* CBRecommendLikeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CBRecommendLikeCell.xib; sourceTree = "<group>"; };
 		83B180BBF4AB659A9FA79FC2 /* Pods-TestKitchen.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestKitchen.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TestKitchen/Pods-TestKitchen.debug.xcconfig"; sourceTree = "<group>"; };
 		B2EF11C0404821435D7466CE /* Pods_TestKitchen.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TestKitchen.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD1DE23CE90EDF0F2A591C06 /* Pods-TestKitchen.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestKitchen.release.xcconfig"; path = "Pods/Target Support Files/Pods-TestKitchen/Pods-TestKitchen.release.xcconfig"; sourceTree = "<group>"; };
@@ -251,6 +265,7 @@
 		23150EE41D6153EB0033B76B /* resources */ = {
 			isa = PBXGroup;
 			children = (
+				23BD227E1D640A27006272EC /* common */,
 				233C66691D62B9BD00F8CDAE /* nav */,
 				233C66361D62A17F00F8CDAE /* tabbar */,
 				23150F011D61554F0033B76B /* launchImages */,
@@ -284,6 +299,7 @@
 				23150F2D1D6175180033B76B /* UIButton+Util.swift */,
 				233C66671D62A85700F8CDAE /* Const.swift */,
 				233C667A1D62BD6900F8CDAE /* KTCDownloader.swift */,
+				23BD227C1D6407F5006272EC /* UIImageView+Util.swift */,
 			);
 			path = common;
 			sourceTree = "<group>";
@@ -595,8 +611,21 @@
 		233C667F1D62C62200F8CDAE /* view */ = {
 			isa = PBXGroup;
 			children = (
+				23BD22761D63FB9D006272EC /* CBRecommendView.swift */,
+				23BD22781D63FF46006272EC /* CBRecommendADCell.swift */,
+				23BD22791D63FF46006272EC /* CBRecommendADCell.xib */,
+				23BD22811D64173C006272EC /* CBRecommendLikeCell.swift */,
+				23BD22821D64173C006272EC /* CBRecommendLikeCell.xib */,
 			);
 			path = view;
+			sourceTree = "<group>";
+		};
+		23BD227E1D640A27006272EC /* common */ = {
+			isa = PBXGroup;
+			children = (
+				23BD227F1D640A27006272EC /* sdefaultImage.png */,
+			);
+			path = common;
 			sourceTree = "<group>";
 		};
 		5421F19704E2E1D2ECEC94CA /* Frameworks */ = {
@@ -730,6 +759,7 @@
 				23150EC11D6151B50033B76B /* LaunchScreen.storyboard in Resources */,
 				233C66551D62A17F00F8CDAE /* home_select@2x.png in Resources */,
 				233C664F1D62A17F00F8CDAE /* community_normal@2x.png in Resources */,
+				23BD22841D64173C006272EC /* CBRecommendLikeCell.xib in Resources */,
 				23150F151D61554F0033B76B /* AppIcon40x40@2x.png in Resources */,
 				233C66501D62A17F00F8CDAE /* community_normal@3x.png in Resources */,
 				233C66631D62A17F00F8CDAE /* shop_normal@2x.png in Resources */,
@@ -764,10 +794,12 @@
 				233C66651D62A17F00F8CDAE /* shop_select@2x.png in Resources */,
 				233C66601D62A17F00F8CDAE /* shike_normal@3x.png in Resources */,
 				233C66771D62B9BD00F8CDAE /* saoyisao@3x.png in Resources */,
+				23BD22801D640A27006272EC /* sdefaultImage.png in Resources */,
 				233C66541D62A17F00F8CDAE /* home_normal@3x.png in Resources */,
 				233C66561D62A17F00F8CDAE /* home_select@3x.png in Resources */,
 				233C66591D62A17F00F8CDAE /* mine_select@2x.png in Resources */,
 				233C66531D62A17F00F8CDAE /* home_normal@2x.png in Resources */,
+				23BD227B1D63FF46006272EC /* CBRecommendADCell.xib in Resources */,
 				23150F141D61554F0033B76B /* AppIcon29x29@3x.png in Resources */,
 				23150F281D6164200033B76B /* Ctrl.json in Resources */,
 				233C665D1D62A17F00F8CDAE /* report_select@2x.png in Resources */,
@@ -849,15 +881,19 @@
 				23150F1C1D615ABD0033B76B /* BaseViewController.swift in Sources */,
 				23150F201D615B390033B76B /* CommunityViewController.swift in Sources */,
 				23150F1E1D615B040033B76B /* CookBookViewController.swift in Sources */,
+				23BD22831D64173C006272EC /* CBRecommendLikeCell.swift in Sources */,
 				23150F221D615B620033B76B /* MallViewController.swift in Sources */,
 				23150F2E1D6175180033B76B /* UIButton+Util.swift in Sources */,
 				23150F241D615B920033B76B /* FoodClassViewController.swift in Sources */,
 				23150F2A1D61730F0033B76B /* UIView+Util.swift in Sources */,
 				23150F261D615BBC0033B76B /* ProfileViewController.swift in Sources */,
 				23150EB71D6151B50033B76B /* AppDelegate.swift in Sources */,
+				23BD22771D63FB9D006272EC /* CBRecommendView.swift in Sources */,
 				23150F1A1D615A4F0033B76B /* MainTabBarController.swift in Sources */,
+				23BD227D1D6407F5006272EC /* UIImageView+Util.swift in Sources */,
 				233C667B1D62BD6900F8CDAE /* KTCDownloader.swift in Sources */,
 				23150F2C1D6173A80033B76B /* UILabel+Util.swift in Sources */,
+				23BD227A1D63FF46006272EC /* CBRecommendADCell.swift in Sources */,
 				233C66681D62A85700F8CDAE /* Const.swift in Sources */,
 				233C66811D62C65500F8CDAE /* CBRecommendModel.swift in Sources */,
 			);

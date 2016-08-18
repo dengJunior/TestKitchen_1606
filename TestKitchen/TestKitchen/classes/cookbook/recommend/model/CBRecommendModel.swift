@@ -22,7 +22,7 @@ class CBRecommendModel: NSObject {
     
     var data: CBRecommendDataModel?
     
-    
+    /**/
     
     class func parseModel(data: NSData) -> CBRecommendModel {
     
@@ -45,16 +45,7 @@ class CBRecommendModel: NSObject {
     
         model.data = CBRecommendDataModel.parseModel(dataDict)
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+        
     
     
         return model
@@ -63,7 +54,7 @@ class CBRecommendModel: NSObject {
     
     
     
-    
+
     
     
     
@@ -90,7 +81,7 @@ class CBRecommendDataModel: NSObject{
     
     
     
-    
+    /**/
     
     class func parseModel(jsonData: JSON) -> CBRecommendDataModel {
     
@@ -102,36 +93,14 @@ class CBRecommendDataModel: NSObject{
         var bArray = Array<CBRecommendBannerModel>()
         
         for (_,subjson) in bannerArray{
-        
-        
-            
+     
             let bannerModel = CBRecommendBannerModel.parseModel(subjson)
-            
-            
-            
-            
-            
+     
             bArray.append(bannerModel)
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+     
         }
-        
-        
-        
-        
-    
-    
+                
         model.banner = bArray
-    
-    
     
         let listArray = jsonData["widgetList"]
         var wlArray = Array<CBRecommendWidgetListModel>()
@@ -147,33 +116,14 @@ class CBRecommendDataModel: NSObject{
             
             wlArray.append(wlModel)
             
-            
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+     
         }
         
         
         model.widgetList = wlArray
         
         
-        
-        
-        
-        
-        
-        
-        
-        
-    
-    
+     
         return model
     
     

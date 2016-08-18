@@ -374,9 +374,9 @@ extension MainTabBarController{
     func clickBtn(curBtn: UIButton){
 
     
-        let lastBtnView = self.view.viewWithTag(300+selectedIndex)
+        let lastBtnView = bgView!.viewWithTag(300+selectedIndex)
         
-        
+        print(lastBtnView?.description)
         
         if let tmpBtn = lastBtnView{
             let lastBtn = tmpBtn as! UIButton

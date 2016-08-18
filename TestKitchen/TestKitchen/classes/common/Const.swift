@@ -11,6 +11,16 @@ import UIKit
 
 
 
+
+
+
+
+
+
+
+
+
+
 public let kScreenWidth = UIScreen.mainScreen().bounds.size.width
 
 

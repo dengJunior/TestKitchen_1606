@@ -31,10 +31,8 @@ class CBRecommendView: UIView , UITableViewDelegate , UITableViewDataSource{
         
         
         }
-    
-    
-    
-    
+      
+       
     
     }
     
@@ -74,7 +72,17 @@ extension CBRecommendView{
 
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
+        
+        var sectionNum = 1
+        
+        if model?.data?.widgetList?.count > 0{
+        
+        sectionNum += (model?.data?.widgetList?.count)!
+        }
+        
+        
+        
+        return sectionNum
     }
     
     
@@ -91,9 +99,37 @@ extension CBRecommendView{
             
             }
         
+        }else{
+        
+            
+            
+            let listModel = model?.data?.widgetList![section-1]
+        
+        
+            if listModel?.widget_type?.integerValue == WidgetType.GuessYourLike.rawValue{
+                
+                
+                
+            
+                rowNum = 1
+            
+            
+                
+            
+            } else if listModel?.widget_type?.integerValue == WidgetType.RedPackage.rawValue{
+                
+                
+                
+                
+                rowNum = 1
+                
+                
+                
+                
+            }
+            
+        
         }
-        
-        
         
         
         return rowNum
@@ -121,7 +157,38 @@ extension CBRecommendView{
         
         
         
+        }else{
+            
+            
+            
+            let listModel = model?.data?.widgetList![indexPath.section-1]
+            
+            
+            if listModel?.widget_type?.integerValue == WidgetType.GuessYourLike.rawValue{
+                
+                
+                
+                
+                height = 80
+                
+                
+                
+                
+            } else if listModel?.widget_type?.integerValue == WidgetType.RedPackage.rawValue{
+                
+                
+                
+                
+                height = 80
+                
+                
+                
+                
+            }
+            
+            
         }
+
         
         
         
@@ -152,7 +219,36 @@ extension CBRecommendView{
         
         
         
+        }else{
+            
+            
+            
+            let listModel = model?.data?.widgetList![indexPath.section-1]
+            
+            
+            if listModel?.widget_type?.integerValue == WidgetType.GuessYourLike.rawValue{
+                
+                
+                
+                
+                cell = CBRecommendLikeCell.createLikeCellFor(tableView, atIndexPath: indexPath, withListModel: listModel!)
+                
+                
+                
+            }else if listModel?.widget_type?.integerValue == WidgetType.RedPackage.rawValue{
+                
+                
+                
+                
+                cell = CBRedPacketCell.createRedPackageCellFor(tableView, atIndexPath: indexPath, withListModel: listModel!)
+                
+                
+                
+            }
+            
+            
         }
+
         
         
         
@@ -163,9 +259,67 @@ extension CBRecommendView{
 
 
 
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        
+        var headView: UIView? = nil
+        
+        if section>0{
+        
+        
+        
+        let listModel = model?.data?.widgetList![section-1]
+        
+        
+        if listModel?.widget_type?.integerValue == WidgetType.GuessYourLike.rawValue{
+            
+            
+            headView = CBSearchHeaderView(frame: CGRectMake(0,0,kScreenWidth,44))
+            
+            
+            
+        }
+
+        
+        }
+        
+        
+        return headView
+        
+    }
 
 
+    
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        
+        
+        var height:CGFloat = 0
+        
+         if section > 0{
+        let listModel = model?.data?.widgetList![section-1]
+        
+       
+        if listModel?.widget_type?.integerValue == WidgetType.GuessYourLike.rawValue{
+            
+            
+            
+            
+            height = 44
+            
+            
+            
+            
+            
+        }
 
+        }
+        
+        return height
+        
+    }
+    
+    
+    
 
 
 }

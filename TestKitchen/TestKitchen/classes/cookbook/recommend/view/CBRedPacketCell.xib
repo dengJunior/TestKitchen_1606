@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="redPacketCellId" id="KGk-i7-Jjw" customClass="CBRedPacketCell" customModule="TestKitchen" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="79"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BcK-lt-Mb6">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+                    </scrollView>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="BcK-lt-Mb6" secondAttribute="trailing" id="8LI-rg-QGH"/>
+                    <constraint firstItem="BcK-lt-Mb6" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Kam-a9-6Co"/>
+                    <constraint firstAttribute="bottom" secondItem="BcK-lt-Mb6" secondAttribute="bottom" constant="-21" id="eAb-UQ-4QO"/>
+                    <constraint firstItem="BcK-lt-Mb6" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="fji-Rl-eO6"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="scrollView" destination="BcK-lt-Mb6" id="JNV-Ln-dbu"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+</document>

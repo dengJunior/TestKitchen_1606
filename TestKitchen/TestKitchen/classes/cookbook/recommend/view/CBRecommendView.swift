@@ -126,8 +126,18 @@ extension CBRecommendView{
                 
                 
                 
-            }
-            
+            }else if listModel?.widget_type?.integerValue == WidgetType.NewProduct.rawValue{
+                
+                
+                
+                
+                rowNum = 1
+                
+                
+                
+                
+        }
+        
         
         }
         
@@ -180,6 +190,18 @@ extension CBRecommendView{
                 
                 
                 height = 80
+                
+                
+                
+                
+            }else if listModel?.widget_type?.integerValue == WidgetType.NewProduct.rawValue{
+                
+                
+                
+                
+                height = 300
+
+              
                 
                 
                 
@@ -244,6 +266,18 @@ extension CBRecommendView{
                 
                 
                 
+            }else if listModel?.widget_type?.integerValue == WidgetType.NewProduct.rawValue{
+                
+                
+                
+                
+                cell = CBRecommendNewCell.createNewCellForTableView(tableView, atIndexPath: indexPath, wirhListModel: listModel!)
+                
+                
+                
+                
+                
+                
             }
             
             
@@ -278,7 +312,17 @@ extension CBRecommendView{
             
             
             
-        }
+            } else if listModel?.widget_type?.integerValue == WidgetType.NewProduct.rawValue{
+                
+                
+                let tempView = CBHeaderView(frame: CGRectMake(0,0,kScreenWidth,44))
+
+                tempView.configTitle((listModel?.title)!)
+            
+            
+                headView = tempView
+                
+            }
 
         
         }
@@ -299,7 +343,7 @@ extension CBRecommendView{
         let listModel = model?.data?.widgetList![section-1]
         
        
-        if listModel?.widget_type?.integerValue == WidgetType.GuessYourLike.rawValue{
+        if listModel?.widget_type?.integerValue == WidgetType.GuessYourLike.rawValue || listModel?.widget_type?.integerValue == WidgetType.NewProduct.rawValue{
             
             
             

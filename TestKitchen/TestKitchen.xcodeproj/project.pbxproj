@@ -77,6 +77,12 @@
 		237A38E61D65620200B4B3C1 /* search1.png in Resources */ = {isa = PBXBuildFile; fileRef = 237A38E51D65620200B4B3C1 /* search1.png */; };
 		237A38E91D65631F00B4B3C1 /* CBRedPacketCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237A38E71D65631F00B4B3C1 /* CBRedPacketCell.swift */; };
 		237A38EA1D65631F00B4B3C1 /* CBRedPacketCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 237A38E81D65631F00B4B3C1 /* CBRedPacketCell.xib */; };
+		2381EE371D6A905F008A512C /* CBSceneCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2381EE351D6A905F008A512C /* CBSceneCell.swift */; };
+		2381EE381D6A905F008A512C /* CBSceneCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2381EE361D6A905F008A512C /* CBSceneCell.xib */; };
+		2381EE3B1D6A9764008A512C /* CBTalentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2381EE391D6A9764008A512C /* CBTalentCell.swift */; };
+		2381EE3C1D6A9764008A512C /* CBTalentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2381EE3A1D6A9764008A512C /* CBTalentCell.xib */; };
+		2381EE3F1D6AA612008A512C /* CBWorksCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2381EE3D1D6AA612008A512C /* CBWorksCell.swift */; };
+		2381EE401D6AA612008A512C /* CBWorksCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2381EE3E1D6AA612008A512C /* CBWorksCell.xib */; };
 		23B182D01D66942D0055630D /* CBRecommendNewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B182CE1D66942D0055630D /* CBRecommendNewCell.swift */; };
 		23B182D11D66942D0055630D /* CBRecommendNewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23B182CF1D66942D0055630D /* CBRecommendNewCell.xib */; };
 		23B182D41D66993F0055630D /* play-A@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23B182D21D66993F0055630D /* play-A@2x.png */; };
@@ -187,6 +193,12 @@
 		237A38E51D65620200B4B3C1 /* search1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = search1.png; sourceTree = "<group>"; };
 		237A38E71D65631F00B4B3C1 /* CBRedPacketCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CBRedPacketCell.swift; sourceTree = "<group>"; };
 		237A38E81D65631F00B4B3C1 /* CBRedPacketCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CBRedPacketCell.xib; sourceTree = "<group>"; };
+		2381EE351D6A905F008A512C /* CBSceneCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CBSceneCell.swift; sourceTree = "<group>"; };
+		2381EE361D6A905F008A512C /* CBSceneCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CBSceneCell.xib; sourceTree = "<group>"; };
+		2381EE391D6A9764008A512C /* CBTalentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CBTalentCell.swift; sourceTree = "<group>"; };
+		2381EE3A1D6A9764008A512C /* CBTalentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CBTalentCell.xib; sourceTree = "<group>"; };
+		2381EE3D1D6AA612008A512C /* CBWorksCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CBWorksCell.swift; sourceTree = "<group>"; };
+		2381EE3E1D6AA612008A512C /* CBWorksCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CBWorksCell.xib; sourceTree = "<group>"; };
 		23B182CE1D66942D0055630D /* CBRecommendNewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CBRecommendNewCell.swift; sourceTree = "<group>"; };
 		23B182CF1D66942D0055630D /* CBRecommendNewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CBRecommendNewCell.xib; sourceTree = "<group>"; };
 		23B182D21D66993F0055630D /* play-A@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "play-A@2x.png"; sourceTree = "<group>"; };
@@ -652,6 +664,12 @@
 				23B182D61D66AAF60055630D /* CBHeaderView.swift */,
 				23B182DA1D66B14B0055630D /* CBSpecialCell.swift */,
 				23B182DB1D66B14B0055630D /* CBSpecialCell.xib */,
+				2381EE351D6A905F008A512C /* CBSceneCell.swift */,
+				2381EE361D6A905F008A512C /* CBSceneCell.xib */,
+				2381EE391D6A9764008A512C /* CBTalentCell.swift */,
+				2381EE3A1D6A9764008A512C /* CBTalentCell.xib */,
+				2381EE3D1D6AA612008A512C /* CBWorksCell.swift */,
+				2381EE3E1D6AA612008A512C /* CBWorksCell.xib */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -843,6 +861,7 @@
 				233C66751D62B9BD00F8CDAE /* navBtn_bag.png in Resources */,
 				23B182D11D66942D0055630D /* CBRecommendNewCell.xib in Resources */,
 				23150F0E1D61554F0033B76B /* LaunchImage-700-568h@2x.png in Resources */,
+				2381EE3C1D6A9764008A512C /* CBTalentCell.xib in Resources */,
 				23150EBC1D6151B50033B76B /* Main.storyboard in Resources */,
 				237A38E61D65620200B4B3C1 /* search1.png in Resources */,
 				23B182D91D66ADE70055630D /* more_icon.png in Resources */,
@@ -851,10 +870,12 @@
 				233C66581D62A17F00F8CDAE /* mine_normal@3x.png in Resources */,
 				233C66571D62A17F00F8CDAE /* mine_normal@2x.png in Resources */,
 				23150F171D61554F0033B76B /* AppIcon60x60@2x.png in Resources */,
+				2381EE381D6A905F008A512C /* CBSceneCell.xib in Resources */,
 				233C66741D62B9BD00F8CDAE /* navBar.png in Resources */,
 				233C66651D62A17F00F8CDAE /* shop_select@2x.png in Resources */,
 				23B182DD1D66B14B0055630D /* CBSpecialCell.xib in Resources */,
 				233C66601D62A17F00F8CDAE /* shike_normal@3x.png in Resources */,
+				2381EE401D6AA612008A512C /* CBWorksCell.xib in Resources */,
 				233C66771D62B9BD00F8CDAE /* saoyisao@3x.png in Resources */,
 				23BD22801D640A27006272EC /* sdefaultImage.png in Resources */,
 				233C66541D62A17F00F8CDAE /* home_normal@3x.png in Resources */,
@@ -954,9 +975,12 @@
 				23150F241D615B920033B76B /* FoodClassViewController.swift in Sources */,
 				23150F2A1D61730F0033B76B /* UIView+Util.swift in Sources */,
 				23150F261D615BBC0033B76B /* ProfileViewController.swift in Sources */,
+				2381EE3F1D6AA612008A512C /* CBWorksCell.swift in Sources */,
 				23150EB71D6151B50033B76B /* AppDelegate.swift in Sources */,
 				23BD22771D63FB9D006272EC /* CBRecommendView.swift in Sources */,
+				2381EE371D6A905F008A512C /* CBSceneCell.swift in Sources */,
 				23150F1A1D615A4F0033B76B /* MainTabBarController.swift in Sources */,
+				2381EE3B1D6A9764008A512C /* CBTalentCell.swift in Sources */,
 				23BD227D1D6407F5006272EC /* UIImageView+Util.swift in Sources */,
 				233C667B1D62BD6900F8CDAE /* KTCDownloader.swift in Sources */,
 				23150F2C1D6173A80033B76B /* UILabel+Util.swift in Sources */,

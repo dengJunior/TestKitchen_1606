@@ -39,7 +39,7 @@ class CBHeaderView: UIView {
         addSubview(bgView)
         
         
-        let titleW: CGFloat = 100
+        let titleW: CGFloat = 120
         let imageW: CGFloat = 24
         
         let x = (bounds.size.width - titleW - imageW)/2
@@ -97,25 +97,4 @@ class CBHeaderView: UIView {
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-
 }

@@ -136,7 +136,37 @@ extension CBRecommendView{
                 
                 
                 
-        }
+            }else if listModel?.widget_type?.integerValue == WidgetType.Special.rawValue{
+                
+                
+                
+                
+                rowNum = 1
+                
+                
+                
+                
+            }else if listModel?.widget_type?.integerValue == WidgetType.Scene.rawValue{
+                
+                
+                
+                
+                rowNum = 1
+                
+                
+                
+                
+            }else if listModel?.widget_type?.integerValue == WidgetType.Talent.rawValue{
+                
+                
+                
+                
+                rowNum = (listModel?.widget_data?.count)!/4
+                
+                
+                
+                
+            }
         
         
         }
@@ -161,12 +191,7 @@ extension CBRecommendView{
             
             }
             
-        
-        
-        
-        
-        
-        
+            
         }else{
             
             
@@ -203,6 +228,33 @@ extension CBRecommendView{
 
               
                 
+                
+                
+                
+            }else if listModel?.widget_type?.integerValue == WidgetType.Special.rawValue{
+                
+                
+                
+                
+                height = 200
+                
+                
+                
+            }else if listModel?.widget_type?.integerValue == WidgetType.Scene.rawValue{
+                
+                
+                
+                
+                height = 60
+                
+                
+                
+            }else if listModel?.widget_type?.integerValue == WidgetType.Talent.rawValue{
+                
+                
+                
+                
+                height = 80
                 
                 
                 
@@ -278,6 +330,28 @@ extension CBRecommendView{
                 
                 
                 
+            }else if listModel?.widget_type?.integerValue == WidgetType.Special.rawValue{
+                
+                
+                
+                cell = CBSpecialCell.createSpecialCellFor(tableView, atIndexPath: indexPath, withListModel: listModel!)
+                
+                
+                
+                
+                
+            }else if listModel?.widget_type?.integerValue == WidgetType.Scene.rawValue{
+                
+                
+                
+                cell = CBSceneCell.createSceneCell(tableView, atIndexPath: indexPath, withListModel: listModel!)
+                
+                
+            }else if listModel?.widget_type?.integerValue == WidgetType.Talent.rawValue{
+                
+                
+                
+                cell = CBTalentCell.createTalentCellFor(tableView, atIndexPath: indexPath, withListModel: listModel!)
             }
             
             
@@ -312,7 +386,7 @@ extension CBRecommendView{
             
             
             
-            } else if listModel?.widget_type?.integerValue == WidgetType.NewProduct.rawValue{
+            } else if listModel?.widget_type?.integerValue == WidgetType.NewProduct.rawValue || listModel?.widget_type?.integerValue == WidgetType.Special.rawValue || listModel?.widget_type?.integerValue == WidgetType.Talent.rawValue {
                 
                 
                 let tempView = CBHeaderView(frame: CGRectMake(0,0,kScreenWidth,44))
@@ -322,7 +396,7 @@ extension CBRecommendView{
             
                 headView = tempView
                 
-            }
+        }
 
         
         }
@@ -343,9 +417,7 @@ extension CBRecommendView{
         let listModel = model?.data?.widgetList![section-1]
         
        
-        if listModel?.widget_type?.integerValue == WidgetType.GuessYourLike.rawValue || listModel?.widget_type?.integerValue == WidgetType.NewProduct.rawValue{
-            
-            
+        if listModel?.widget_type?.integerValue == WidgetType.GuessYourLike.rawValue || listModel?.widget_type?.integerValue == WidgetType.NewProduct.rawValue || listModel?.widget_type?.integerValue == WidgetType.Special.rawValue || listModel?.widget_type?.integerValue == WidgetType.Talent.rawValue {
             
             
             height = 44

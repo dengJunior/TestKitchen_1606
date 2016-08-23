@@ -19,9 +19,18 @@ public enum WidgetType: Int{
     case GuessYourLike = 1
     case RedPackage = 2
 
+    
     case NewProduct = 5
 
+    case Special = 3
+
+    case Scene = 9
+    case Talent = 4
+    
+
 }
+
+
 
 
 

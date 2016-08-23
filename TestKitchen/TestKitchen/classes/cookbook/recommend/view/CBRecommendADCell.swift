@@ -29,6 +29,26 @@ class CBRecommendADCell: UITableViewCell, UIScrollViewDelegate{
     
     func showData(){
     
+        
+        
+        for sub in scrollView.subviews{
+        
+        
+            sub.removeFromSuperview()
+        
+        
+        }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         let cnt = bannerArray?.count
         if cnt>0{
         

@@ -31,7 +31,9 @@ public let kScreenHeight = UIScreen.mainScreen().bounds.size.height
 public let kHostUrl = "http://api.izhangchu.com/?appVersion=4.5&sysVersion=9.3.2&devModel=iPhone"
 
 
-
+//食材
+//http://api.izhangchu.com/?appVersion=4.3.2&sysVersion=9.2.1&devModel=iPhone
+//dishes_id=14528&methodName=DishesMaterial&token=8ABD36C80D1639D9E81130766BE642B7&user_id=1386387&version=4.32
 
 
 //一、食谱

@@ -63,7 +63,7 @@ class CBWorksCell: UITableViewCell {
                         let subView = contentView.viewWithTag(200+i)
                         if subView?.isKindOfClass(UIButton.self) == true{
                             let btn = subView as! UIButton
-                            
+                            btn.layer.masksToBounds = true
                             btn.layer.cornerRadius = 20
                             let url = NSURL(string: (imageModel?.content)!)
                             btn.kf_setImageWithURL(url!, forState: .Normal, placeholderImage: UIImage(named: "sdefaultImage"), optionsInfo: nil, progressBlock: nil, completionHandler: nil)

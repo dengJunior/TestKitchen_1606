@@ -16,13 +16,13 @@ public enum KTCDownloaderType: Int{
     
     case Default = 10
     
+    case Recommend
+    
+    case FoodMaterial
+    
+    case Category
     
     
-    
-
-
-
-
 }
 
 
@@ -60,10 +60,18 @@ class KTCDownloader: NSObject {
     
     
     
-    func postWithUrl(urlString: String, paras: Dictionary<String,String>? ){
+    func postWithUrl(urlString: String, paras: Dictionary<String,String> ){
     
         
-        Alamofire.request(.POST, urlString, parameters: paras, encoding: ParameterEncoding.URL, headers: nil).responseData { (response) in
+        
+        var newParam = paras
+//        newParam["methodName"] = "SceneHome"
+        newParam["token"] = ""
+        newParam["user_id"] = ""
+        newParam["version"] = "4.5"
+        
+        
+        Alamofire.request(.POST, urlString, parameters: newParam, encoding: ParameterEncoding.URL, headers: nil).responseData { (response) in
             
             
             

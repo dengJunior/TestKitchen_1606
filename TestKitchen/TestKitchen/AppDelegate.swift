@@ -11,7 +11,7 @@ import UIKit
 import SnapKit
 
 import Kingfisher
-
+import SwiftyJSON
 
 
 @UIApplicationMain

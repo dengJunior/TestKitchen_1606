@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+//实现通用，不用写死。代理和协议
 class CBRecommendView: UIView , UITableViewDelegate , UITableViewDataSource{
 
     /*
@@ -492,13 +492,13 @@ extension CBRecommendView{
         
         let h: CGFloat = 44
         
-        if scrollView.contentOffset.y <= h{
+        if scrollView.contentOffset.y > h{
         
             
             scrollView.contentInset = UIEdgeInsetsMake(-h, 0, 0, 0)
             
         }else if scrollView.contentOffset.y > 0 {
-        
+
         
             scrollView.contentInset = UIEdgeInsetsMake(-scrollView.contentOffset.y, 0,0 , 0)
         

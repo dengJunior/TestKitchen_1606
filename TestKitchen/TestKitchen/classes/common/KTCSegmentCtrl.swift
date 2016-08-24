@@ -8,11 +8,52 @@
 
 import UIKit
 
+
+
+protocol  KTCSegmentCtrlDelegate : NSObjectProtocol {
+    
+    func didSelectSegCtrl(segCtrl: KTCSegmentCtrl, atIndex index: Int)
+    
+    
+    
+}
+
+
+
+
+
+
+
+
 class KTCSegmentCtrl: UIView {
     
-    var selectedIndex: Int = 0
+    
+    weak var delegate: KTCSegmentCtrlDelegate?
+    
+    var selectedIndex: Int = 0{
+        
+        didSet{
+            
+            
+            
+            if selectedIndex != oldValue{
+            
+                selectedBtnAtIndex(selectedIndex, lastIndex:  oldValue)
+                //系统自动传过来的
+                //oldValue
+            
+            
+            }
+            
+            
+            
+            
+        }
+        
+    }
     
 
+    private var lineView: UIView?
     
    init(frame: CGRect, titleNames: [String]) {
         super.init(frame: frame)
@@ -57,7 +98,19 @@ class KTCSegmentCtrl: UIView {
         
     
     
+        lineView = UIView.createView()
+        
+        lineView?.backgroundColor = UIColor.orangeColor()
+        
+        lineView?.frame = CGRectMake(0, bounds.size.height-4, w, 2)
     
+        addSubview(lineView!)
+        
+        
+        
+        
+        
+        
     
     
     
@@ -86,46 +139,64 @@ class KTCSegmentCtrl: UIView {
     
         
         if btn.tag != 300 + selectedIndex{
+            
+            
+//            selectedBtnAtIndex(btn.tag - 300)
+            selectedIndex = btn.tag - 300
+            
+            
+            
+            delegate?.didSelectSegCtrl(self, atIndex: selectedIndex)
+            
+        
+        }
+    
+    }
+    
+    
+    
+    
+    
+    func selectedBtnAtIndex(index: Int, lastIndex: Int){
+    
+        print("你猜")
+        
+        let curBtn = viewWithTag(300+index)
         
         
+        if curBtn?.isKindOfClass(UIButton.self) == true {
+        
+            let btn = curBtn as! KTCSegmentBtn
+            
+            btn.clicked = true
+            
+            
+        }
         
         
-        
-        
-        btn.selected = true
-        
-        
-        
-        let lastBtn = viewWithTag(300 + selectedIndex)
-        
+        let lastBtn = viewWithTag(300 + lastIndex)
+
         
         if lastBtn?.isKindOfClass(KTCSegmentBtn.self) == true {
-        
+            
             
             let lastSegBtn = lastBtn as! KTCSegmentBtn
             
             
             
             lastSegBtn.clicked = false
-        
-        
-        
-        
+            
+            
+            
+            
         }
         
         
-    
-    
-    
-    
-    
-    
-    
-        selectedIndex = btn.tag - 300
-
-    
-        }
-    
+//        selectedIndex = index
+        
+        lineView?.frame.origin.x = (lineView?.bounds.size.width)! * CGFloat(selectedIndex)
+        
+        
     }
     
     
@@ -189,7 +260,7 @@ class KTCSegmentBtn: UIControl{
         didSet{
         
         
-            if clicked == false{
+            if clicked == true{
             
                 label?.textColor = UIColor.blackColor()
             

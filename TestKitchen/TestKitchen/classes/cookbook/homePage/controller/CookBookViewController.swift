@@ -8,14 +8,20 @@
 
 import UIKit
 
-class CookBookViewController: BaseViewController {
+class CookBookViewController: BaseViewController  {
 
+    
+    private var scrollView: UIScrollView?
+    
+    
     //1
     private var recommendView: CBRecommendView?
     
     private var foodView: CBMaterialView?
     
     private var categoryView: CBMaterialView?
+    
+    
     
     
     private var segCtrl: KTCSegmentCtrl?
@@ -32,7 +38,7 @@ class CookBookViewController: BaseViewController {
         
         downloadFoodData()
         downloadRecommendData()
-        
+        downloadCategoteryData()
         
     }
 
@@ -72,14 +78,16 @@ class CookBookViewController: BaseViewController {
         
         
         
-        let scrollView = UIScrollView()
-        scrollView.pagingEnabled = true
-        scrollView.showsHorizontalScrollIndicator = false
-        view.addSubview(scrollView)
+        scrollView
+            = UIScrollView()
+        scrollView!.pagingEnabled = true
+        scrollView!.showsHorizontalScrollIndicator = false
+        scrollView?.delegate = self
+        view.addSubview(scrollView!)
         
         
         
-        scrollView.snp_makeConstraints { [weak self] (make) in
+        scrollView!.snp_makeConstraints { [weak self] (make) in
             
 //            make.edges.equalTo(self!.view)
 
@@ -90,11 +98,11 @@ class CookBookViewController: BaseViewController {
         
         
         let containerView = UIView.createView()
-        scrollView.addSubview(containerView)
+        scrollView!.addSubview(containerView)
         
         containerView.snp_makeConstraints { (make) in
-            make.edges.equalTo(scrollView)
-            make.height.equalTo(scrollView)
+            make.edges.equalTo(self.scrollView!)
+            make.height.equalTo(self.scrollView!)
             
             
         }
@@ -180,49 +188,24 @@ class CookBookViewController: BaseViewController {
         
         
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-//        
-//        recommendView = CBRecommendView()
-//        
-//        
-//        
-//        containerView.addSubview(recommendView!)
-//    
-//    
-        
-//        recommendView?.snp_makeConstraints( closure: {    [weak self]     (make) in
-//            
-//            make.edges.equalTo(self!.view).inset(UIEdgeInsetsMake(64, 0, 49, 0))
-//            
-//            
-//        })
-//    
-        
-        
-        
-        
-        
-        
-        
-        
-        
-    
-    
-    
     }
+    
+    func downloadCategoteryData(){
+    
+    
+        let params = ["methodName":"CategoryIndex"]
+        
+        let downloader = KTCDownloader()
+        
+        downloader.delegate = self
+        
+        downloader.type = .Category
+        
+        downloader.postWithUrl(kHostUrl, paras: params)
+      
+        
+    }
+    
     
     
     
@@ -254,6 +237,8 @@ class CookBookViewController: BaseViewController {
         
         segCtrl = KTCSegmentCtrl(frame: CGRectMake(80, 0, kScreenWidth-80*2, 44), titleNames: ["推荐","食材","分类"])
         
+        
+        segCtrl?.delegate = self
         navigationItem.titleView = segCtrl
     
         addNavBtn("saoyisao", target: self, action: #selector(scanAction), isLeft: true)
@@ -364,15 +349,51 @@ extension CookBookViewController: KTCDownloadDelegate{
             
                 print(model)
             
+                dispatch_async(dispatch_get_main_queue(), {
+                    
+                    [weak self] in
+                    
+                    
+                    self?.foodView?.model = model
+                    
+                    
+                    
+                    
+                    
+                    })
+                
+                
             
             }
             
-            
+           
             
             
             
             
         }else if downloader.type == KTCDownloaderType.Category{
+            
+            
+            if let jsonData = data{
+            
+                let model = CBMaterialModel.palseModelWithData(jsonData)
+                
+                
+            
+            
+            
+                dispatch_async(dispatch_get_main_queue(), { 
+                    [weak self]
+                        in
+                    
+                    self!.categoryView?.model = model
+                })
+            
+            
+            
+            
+            
+            }
             
             
             
@@ -402,6 +423,75 @@ extension CookBookViewController: KTCDownloadDelegate{
     }
 
 
+
+
+
+
+
+
+
+
+
+
+}
+
+
+
+extension CookBookViewController: KTCSegmentCtrlDelegate {
+
+
+
+    func didSelectSegCtrl(segCtrl: KTCSegmentCtrl, atIndex index: Int) {
+        
+        
+        
+        
+        
+        scrollView?.setContentOffset(CGPointMake(kScreenWidth*CGFloat(index), 0), animated: true)
+        
+//        scrollView?.contentOffset =
+        //MARK: - Button
+        
+        
+        
+        
+        
+        
+        
+    }
+
+
+
+
+
+
+}
+
+
+
+
+
+//MARK:-  UIScrollView
+
+extension CookBookViewController : UIScrollViewDelegate{
+
+    
+    
+    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+        
+        
+        let index = Int(scrollView.contentOffset.x/scrollView.bounds.size.width)
+        
+        segCtrl?.selectedIndex = index
+        
+        
+        
+        
+        
+        
+        
+        
+    }
 
 
 

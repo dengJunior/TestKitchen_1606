@@ -20,11 +20,6 @@ protocol  KTCSegmentCtrlDelegate : NSObjectProtocol {
 
 
 
-
-
-
-
-
 class KTCSegmentCtrl: UIView {
     
     
@@ -79,7 +74,7 @@ class KTCSegmentCtrl: UIView {
             btn.configTitle(titleNames[i])
             
             btn.tag = 300+i
-            btn.addTarget(self, action: #selector(clickBtn), forControlEvents: .TouchUpInside)
+            btn.addTarget(self, action: #selector(clickBtn(_:)), forControlEvents: .TouchUpInside)
             
             addSubview(btn)
             
@@ -164,7 +159,7 @@ class KTCSegmentCtrl: UIView {
         let curBtn = viewWithTag(300+index)
         
         
-        if curBtn?.isKindOfClass(UIButton.self) == true {
+        if curBtn?.isKindOfClass(KTCSegmentBtn.self) == true {
         
             let btn = curBtn as! KTCSegmentBtn
             
@@ -217,29 +212,7 @@ class KTCSegmentCtrl: UIView {
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
 
-    /*
-    // Only override drawRect: if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func drawRect(rect: CGRect) {
-        // Drawing code
-    }
-    */
 
 }
 

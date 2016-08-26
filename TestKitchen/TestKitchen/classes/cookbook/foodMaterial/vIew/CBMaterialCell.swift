@@ -45,7 +45,7 @@ class CBMaterialCell: UITableViewCell {
         
         
     
-        let spaceX: CGFloat = 20
+        let spaceX: CGFloat = 10
         let spaceY: CGFloat = 10
         let colNum = 5
         let h: CGFloat = 40

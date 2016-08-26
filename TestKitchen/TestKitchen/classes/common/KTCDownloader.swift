@@ -22,8 +22,16 @@ public enum KTCDownloaderType: Int{
     
     case Category
     
+    case FoodCourse
+    case FoodCourseComment
+    
+    
+    
     
 }
+
+
+
 
 
 

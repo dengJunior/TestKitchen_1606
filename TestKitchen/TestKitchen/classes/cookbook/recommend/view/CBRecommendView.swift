@@ -18,6 +18,10 @@ class CBRecommendView: UIView , UITableViewDelegate , UITableViewDataSource{
     }
     */
     
+    var clickClosure: CBCellClosure?
+    
+    
+    
     private var tbView: UITableView?
     
     
@@ -322,7 +326,7 @@ extension CBRecommendView{
             
             
             
-                cell = CBRecommendADCell.createADCellFor(tableView, arIndexPath: indexPath, withModel: model!)
+                cell = CBRecommendADCell.createADCellFor(tableView, arIndexPath: indexPath, withModel: model!, cellClosure: clickClosure)
             
             
             

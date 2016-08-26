@@ -42,14 +42,6 @@ class CBMaterialView: UIView {
         
         
         
-        
-        
-        
-        
-        
-        
-        
-        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -96,7 +88,8 @@ extension CBMaterialView: UITableViewDelegate, UITableViewDataSource {
         if nil == cell{
         
         
-            cell = CBMaterialCell(style: .Default, reuseIdentifier: cellId)         }
+            cell = CBMaterialCell(style: .Default, reuseIdentifier: cellId)
+        }
         
         
         let typeModel = model?.data?.data![indexPath.row]

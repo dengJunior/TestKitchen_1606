@@ -11,6 +11,9 @@ import UIKit
 class CBRecommendADCell: UITableViewCell, UIScrollViewDelegate{
     
     
+    
+    var clickClosure: CBCellClosure?
+    
     @IBOutlet weak var pageControl: UIPageControl!
 
     
@@ -38,12 +41,6 @@ class CBRecommendADCell: UITableViewCell, UIScrollViewDelegate{
         
         
         }
-        
-        
-        
-        
-        
-        
         
         
         
@@ -78,6 +75,16 @@ class CBRecommendADCell: UITableViewCell, UIScrollViewDelegate{
         
         
                 containerView.addSubview(tmpImageView)
+                
+                
+            
+                tmpImageView.userInteractionEnabled = true
+                tmpImageView.tag = 500 + i
+                let g = UITapGestureRecognizer(target: self, action: #selector(tapImage(_:)))
+                tmpImageView.addGestureRecognizer(g)
+                
+                
+                
                 
                 
                tmpImageView.snp_makeConstraints(closure: { (make) in
@@ -142,7 +149,31 @@ class CBRecommendADCell: UITableViewCell, UIScrollViewDelegate{
     }
     
     
-    class func createADCellFor(tableView: UITableView, arIndexPath indexPath: NSIndexPath, withModel model: CBRecommendModel) -> CBRecommendADCell{
+    
+    
+    func tapImage(g: UIGestureRecognizer){
+    
+        
+        let index = (g.view?.tag)! - 500
+        
+        
+        let imageModel = bannerArray![index]
+        
+        clickClosure!(nil, imageModel.banner_link!)
+    
+    
+    
+    
+    
+    
+    }
+    
+    
+    
+    
+    
+    
+    class func createADCellFor(tableView: UITableView, arIndexPath indexPath: NSIndexPath, withModel model: CBRecommendModel, cellClosure: CBCellClosure?) -> CBRecommendADCell{
     
     
         
@@ -164,6 +195,7 @@ class CBRecommendADCell: UITableViewCell, UIScrollViewDelegate{
     
     
     
+        cell?.clickClosure = cellClosure
     
     
     

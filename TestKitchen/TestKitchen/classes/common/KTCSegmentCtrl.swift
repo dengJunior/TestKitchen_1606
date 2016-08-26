@@ -189,7 +189,7 @@ class KTCSegmentCtrl: UIView {
         
 //        selectedIndex = index
         
-        lineView?.frame.origin.x = (lineView?.bounds.size.width)! * CGFloat(selectedIndex)
+        lineView?.frame.origin.x = (lineView?.bounds.size.width)! * CGFloat(index)
         
         
     }

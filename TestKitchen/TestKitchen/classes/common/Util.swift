@@ -28,11 +28,21 @@ public enum WidgetType: Int{
     case Works = 8
     case Subject = 7
 
+    
+    
+    
+    
 }
 
 
 
 
+
+//第一个 参数， title
+//第二个参数， link
+
+
+public typealias CBCellClosure = (String?, String) -> Void
 
 
 

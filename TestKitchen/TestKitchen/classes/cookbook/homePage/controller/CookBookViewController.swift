@@ -15,7 +15,8 @@ class CookBookViewController: BaseViewController  {
     
     
     //1
-    private var recommendView: CBRecommendView?
+//    private
+    var recommendView: CBRecommendView?
     
     private var foodView: CBMaterialView?
     
@@ -321,13 +322,18 @@ extension CookBookViewController: KTCDownloadDelegate{
                 let model = CBRecommendModel.parseModel(jsonData)
                 
                 
-                print("__________________________________________________________________")
+//                print("__________________________________________________________________")
+                
+                
                 dispatch_async(dispatch_get_main_queue()) {
                     
                     [weak self] in
                     
-                    self!.recommendView?.model = model
+//                    self!.recommendView?.model = model
+
                     
+                 
+                    self!.showRecommendData(model)
                     
                     
                     
@@ -405,16 +411,108 @@ extension CookBookViewController: KTCDownloadDelegate{
         
         
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
         //MARK:-   bejson
+        
+        
+        
+        
+        
+    }
+    
+    
+    
+    func gotoFoodCoursePage(link: String){
+    
+        
+        let startRange = NSString(string: link).rangeOfString("#")
+        
+        let endRange = NSString(string: link).rangeOfString("#",options: NSStringCompareOptions.BackwardsSearch, range: NSMakeRange(0, link.characters.count), locale: nil )
+        
+        let id = NSString(string: link).substringWithRange(NSMakeRange(startRange.location+1, endRange.location - startRange.location - 1))
+        
+        
+        let foodCourseCtrl = FoodCourseViewController()
+        
+        
+        foodCourseCtrl.serialId = id
+        
+        
+        self.navigationController?.pushViewController(foodCourseCtrl, animated: true)
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    }
+    
+    
+    
+    
+    //MARK: 首页推荐
+    
+
+    func showRecommendData(model: CBRecommendModel){
+        
+        
+        
+        recommendView?.model = model
+        recommendView?.clickClosure = { [weak self] ( title: String? ,link: String)
+            in
+            
+        
+//        
+//        recommendView?.clickClosure = {
+//                [weak self]
+//        
+//            （title: String, link: String） in
+        
+            if link.hasPrefix("app://food_course_series") == true{
+            
+//                let startRange = link.rangeOfString("#")
+//            
+//                let endRange = link.rangeOfString("#", options: NSStringCompareOptions: BackWardsSearch, range: nil , locale: nil)
+//                
+//                Range(start: startRange.)
+//                let id = link.subStringWithRange(Range(start: , end: ))
+                
+                
+                
+             
+                
+                
+                self!.gotoFoodCoursePage(link)
+            
+            
+            
+            
+            
+            
+            
+            
+            }
+            
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        }
+        
+        
         
         
         
@@ -423,17 +521,15 @@ extension CookBookViewController: KTCDownloadDelegate{
     }
 
 
-
-
-
-
-
-
-
-
-
-
 }
+
+
+
+
+
+
+
+
 
 
 

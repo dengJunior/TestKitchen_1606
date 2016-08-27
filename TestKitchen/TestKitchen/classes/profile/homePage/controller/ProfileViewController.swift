@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProfileViewController: BaseViewController {
+class ProfileViewController: KTCHomeViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

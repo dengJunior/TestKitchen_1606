@@ -75,9 +75,10 @@ extension BaseViewController{
     
         
         
-        let titleLabel = UILabel.createLabel(title, font: UIFont.boldSystemFontOfSize(24), textAligment: .Center, textColor: UIColor.blackColor())
+        let titleLabel = UILabel.createLabel(title, font: UIFont.boldSystemFontOfSize(20), textAligment: .Center, textColor: UIColor.blackColor())
 
-        
+    
+        titleLabel.frame = CGRectMake(80, 0, kScreenWidth - 80*2, 44)
         navigationItem.titleView = titleLabel
     
     

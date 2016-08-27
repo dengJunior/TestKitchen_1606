@@ -209,7 +209,7 @@ class MainTabBarController: UITabBarController {
     
     func createCustomTabbar(titleNames:[String], imageNames:[String]){
     
-        
+        tabBar.hidden = true
         bgView = UIView.createView()
         
         bgView?.backgroundColor = UIColor.whiteColor()
@@ -337,6 +337,44 @@ class MainTabBarController: UITabBarController {
     }
     
     
+    
+    
+    func showTabBar(){
+    
+    
+        
+        UIView.animateWithDuration(0.05) { 
+            [weak self]
+            in
+            
+            self!.bgView!.hidden = false
+            
+            
+        }
+    
+    }
+    
+    
+    
+    func hideTabBar(){
+    
+        UIView.animateWithDuration(0.05) { 
+            [weak self]
+            in
+            
+            
+            self?.bgView?.hidden = true
+            
+            
+            self?.bgView?.alpha = 0
+            
+        }
+    
+    
+    
+    
+    
+    }
     
     
     

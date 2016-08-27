@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CookBookViewController: BaseViewController  {
+class CookBookViewController: KTCHomeViewController  {
 
     
     private var scrollView: UIScrollView?
@@ -67,6 +67,11 @@ class CookBookViewController: BaseViewController  {
     
     
     }
+    
+    
+      
+    
+        
     
     
     

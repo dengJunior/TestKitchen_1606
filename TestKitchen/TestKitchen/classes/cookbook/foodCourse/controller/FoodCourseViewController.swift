@@ -30,6 +30,14 @@ class FoodCourseViewController: BaseViewController {
     
     private var serialisExpand: Bool = false
     
+    private var curPage = 1
+    
+    
+    private var commentModel: FCComment?
+    
+    
+    private var infoLabel: UILabel?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,7 +50,7 @@ class FoodCourseViewController: BaseViewController {
         
         downloadFoodCourseData()
         
-        
+        downloadCommentData()
         
         
         
@@ -50,7 +58,43 @@ class FoodCourseViewController: BaseViewController {
 
         // Do any additional setup after loading the view.
     }
-
+   
+    func downloadCommentData(){
+    
+        
+        var params = Dictionary<String,String>()
+        
+        params["methodName"] = "CommentList"
+        params["page"] = "\(curPage)"
+        
+        params["relate_id"] = serialId
+        params["size"] = "10"
+        
+        params["type"] = "2"
+        let donwloaderDeng = KTCDownloader()
+        
+        donwloaderDeng.type = KTCDownloaderType.FoodCourseComment
+        donwloaderDeng.delegate = self
+        
+        donwloaderDeng.postWithUrl(kHostUrl, paras: params)
+        
+        
+        
+        
+        
+        
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    }
+    
+    
     
     
     
@@ -160,6 +204,10 @@ class FoodCourseViewController: BaseViewController {
 extension FoodCourseViewController: UITableViewDelegate, UITableViewDataSource {
 
     
+  
+    
+    
+
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         
@@ -192,6 +240,16 @@ extension FoodCourseViewController: UITableViewDelegate, UITableViewDataSource {
         }else if section == 1{
         
         
+            
+                if commentModel?.data?.data?.count>0{
+            
+            
+                    rowNum = (commentModel?.data?.data?.count)!
+                
+                
+                }
+                
+            
         
         
         
@@ -242,6 +300,7 @@ extension FoodCourseViewController: UITableViewDelegate, UITableViewDataSource {
         
         
         
+            height = 80
             
         
         
@@ -259,6 +318,96 @@ extension FoodCourseViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     
+    
+    
+    
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        
+        if section == 1{
+            
+            
+                let bgView = UIView.createView()
+            
+            
+                bgView.frame = CGRectMake(0, 0, kScreenWidth, 60)
+            
+            
+                bgView.backgroundColor = UIColor.whiteColor()
+            
+            
+            
+            if commentModel?.data?.total != nil {
+            
+                let str = "\((commentModel?.data?.total)!)条评论"
+            
+            
+                let numLabel = UILabel.createLabel(str, font: UIFont.systemFontOfSize(17), textAligment: .Center, textColor: UIColor.grayColor())
+                
+                
+                numLabel.frame = CGRectMake(20, 4, 160, 20)
+                
+                
+                bgView.addSubview(numLabel)
+            
+            
+            
+            }
+            
+            
+            
+            
+            let btn = UIButton.createBtn("我要评论", bgImageName: nil, selectBgImageName: nil, target: self, action: nil)
+            
+            
+            
+        
+            bgView.addSubview(btn)
+            btn.frame = CGRectMake(20, 34, kScreenWidth - 20*2, 30)
+            btn.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+            btn.backgroundColor = UIColor.orangeColor()
+            
+            btn.layer.cornerRadius = 6
+            
+            
+            btn.layer.masksToBounds = true
+            
+            bgView.addSubview(btn)
+        
+            
+            
+            
+            
+            
+            
+            
+            
+                return bgView
+            
+            
+            
+            
+        }
+        
+        
+        
+        return UIView()
+        
+    }
+    
+    
+    
+    
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        
+        if section == 1{
+        return 70
+        }
+        
+        
+        return 0
+        
+    }
     
     
     
@@ -307,7 +456,10 @@ extension FoodCourseViewController: UITableViewDelegate, UITableViewDataSource {
         }else if indexPath.section == 1{
         
         
+            
+            let detailModel = commentModel?.data?.data![indexPath.row]
         
+            cell = createCommentCellForTableView(tableView, atIndexPath: indexPath, withModel: detailModel!)
         
         
         
@@ -324,6 +476,34 @@ extension FoodCourseViewController: UITableViewDelegate, UITableViewDataSource {
         
         return cell
     }
+    
+    
+    
+    func createCommentCellForTableView(tableView: UITableView, atIndexPath indexPath: NSIndexPath, withModel detailModel: FCCommentDetail) -> FCCommentCell{
+    
+        let cellId = "commentCellId"
+        
+        var cell = tableView.dequeueReusableCellWithIdentifier(cellId) as? FCCommentCell
+        
+        if nil == cell {
+        
+        
+            cell = NSBundle.mainBundle().loadNibNamed("FCCommentCell", owner: nil, options: nil).last as? FCCommentCell
+        
+        }
+    
+    
+    
+        cell?.model = detailModel
+        
+        
+        
+    
+        return cell!
+    
+    }
+
+    
     
     
     
@@ -441,6 +621,16 @@ extension FoodCourseViewController: UITableViewDelegate, UITableViewDataSource {
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }
 
 
@@ -466,56 +656,109 @@ extension FoodCourseViewController: KTCDownloadDelegate{
     
     func downloader(downloader: KTCDownloader, didFinishWithData data: NSData?) {
         
-        if downloader.type == KTCDownloaderType.FoodCourse {
         
-            let str = NSString.init(data: data!, encoding: NSUTF8StringEncoding)
+        
+        if downloader.type == KTCDownloaderType.FoodCourse {
             
-            print(str!)
-            
-            if let jsonData = data{
-            
-                let model = FoodCourseModel.parseModelWithData(jsonData)
-                print(model)
-                
-                
-                
+            if let jsonData = data {
+                  let model = FoodCourseModel.parseModelWithData(jsonData)
                 serialModel = model
+
+                                dispatch_async(dispatch_get_main_queue(), {
+                                    [weak self] in
+                //                    self?.tbView?.reloadSections(NSIndexSet(index: 1), withRowAnimation: .None)
+                                    self!.tbView!.reloadData()
+                                    
+                                    
+                                    let array = self!.serialModel?.data?.series_name?.componentsSeparatedByString("#")
+                                    
+                                    
+                                    if array?.count > 1{
+                                    
+                                    
+                                        self!.addNavTitle(array![1])
+                                    
+                                    }
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                })
                 
                 
-                dispatch_async(dispatch_get_main_queue() , {
-                    
-                
-                    [weak self] in
-                
-                    self!.tbView?.reloadData()
-                    
-                
-                
-                
-                
-                })
-                
-                
-                
-            
+
             }
             
-        
-        
         }else if downloader.type == .FoodCourseComment{
-        
+                //
             
-        
+            
+            
+            
+            
+            
+//            let str = NSString.init(data: data!, encoding: NSUTF8StringEncoding)
+//            print(str!)
+            if let jsonData = data{
+                let model = FCComment.parseWithData(jsonData)
+//                print(model)
+                if curPage == 1{
+                    commentModel = model
+                }else{
+                    let mutableArray = NSMutableArray(array: (commentModel?.data?.data)!)
+                    mutableArray.addObjectsFromArray((model.data?.data)!)
+                    let array = NSArray(array: mutableArray)
+                    commentModel?.data?.data = array as? [FCCommentDetail]
+                }
+//                serialModel = model
+//                let array = serialModel?.data?.series_name?.componentsSeparatedByString("#")
+                dispatch_async(dispatch_get_main_queue() , {
+                    [weak self] in
+                    var hasMore = false
+                    if self!.commentModel?.data?.total != nil {
+//                        let hasMore = false
+                        let total = NSString(string: (self?.commentModel?.data?.total)!).integerValue
+                        if total > self!.commentModel?.data?.data?.count{
+                            hasMore = true
+                        }
+                    }
+                    if self!.infoLabel == nil {
+                        self!.infoLabel = UILabel.createLabel(nil, font: UIFont.systemFontOfSize(16), textAligment: .Center, textColor: UIColor.blackColor())
+                        self!.infoLabel!.frame = CGRectMake(0, 0, kScreenWidth, 40)
+                        self!.infoLabel?.backgroundColor = UIColor.init(white: 0.8, alpha: 1.0)
+                        self!.tbView?.tableFooterView = self!.infoLabel
+                    }
+                    if hasMore {
+                        self!.infoLabel?.text = "下拉加载更多"
+                    }else{
+                        self?.infoLabel?.text = "没有更多了！"
+                    }
+//                    if array?.count > 1{
+//                        self!.addNavTitle(array![1])
+//                    }
+                self!.tbView?.reloadData()
+                })
+            }
+//        }else if downloader.type == .FoodCourseComment{
+//            if let jsonData = data {
+//                commentModel = FCComment.parseWithData(jsonData)
+//                dispatch_async(dispatch_get_main_queue(), {
+//                    [weak self] in
+////                    self?.tbView?.reloadSections(NSIndexSet(index: 1), withRowAnimation: .None)
+//                    self?.tbView?.reloadData()
+//                })
+            }
         }
-        
-        
     }
-}
 
 
 
 
 
+////
 extension FoodCourseViewController: FCSerialCellDelegate {
 
     
@@ -526,10 +769,6 @@ extension FoodCourseViewController: FCSerialCellDelegate {
         
         
         serialIndex = index
-        
-        
-        
-        
         tbView?.reloadSections(NSIndexSet(index: 0), withRowAnimation: .Automatic)
         
         
@@ -557,9 +796,66 @@ extension FoodCourseViewController: FCSerialCellDelegate {
     
     
     
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        
+        
+        
+        let h: CGFloat = 70
+        
+        if scrollView.contentOffset.y > h{
+            
+            
+            scrollView.contentInset = UIEdgeInsetsMake(-h, 0, 0, 0)
+            
+        }else if scrollView.contentOffset.y > 0 {
+            
+            
+            scrollView.contentInset = UIEdgeInsetsMake(-scrollView.contentOffset.y, 0,0 , 0)
+            
+            
+            
+        }
+        
+        if commentModel?.data?.total != nil{
+        
+        let totalCount =  NSString(string: (commentModel?.data?.total)!).integerValue
+        
+            
+            if totalCount == commentModel?.data?.data?.count {
+            
+            
+                return
+            
+            }
+            
+            
+            
+        }
+        
     
+        let offset: CGFloat = 40
+        
+        if scrollView.contentOffset.y >= scrollView.contentSize.height - scrollView.bounds.size.height - offset {
+        
+            
+            
+            curPage += 1
+            
+            
+            downloadCommentData()
+            
     
+        }
+        
     
+
+}
+
+////
 
 
 }
+
+
+
+

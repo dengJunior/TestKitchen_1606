@@ -180,17 +180,10 @@ class FCSerialCell: UITableViewCell {
     
     //MARK:- func showData(){
     func showData(){
-    
-        
         
         for oldSub in contentView.subviews{
-        
-        
             oldSub.removeFromSuperview()
-        
-        
         }
-        
         
         var cnt = number!
             
@@ -221,23 +214,14 @@ class FCSerialCell: UITableViewCell {
 //        let spaceY: CGFloat = 10
         
         for i in 0..<cnt{
-        
             let row = i/rowNum
-            
             let col = i%rowNum
-            
             let frame = CGRectMake(margin + (btnW+spaceX)*CGFloat(col), spaceY+(btnH+spaceY)*CGFloat(row), btnW, btnH)
-        
-            
-            
-            
             let btn = FCSerialBtn(frame: frame, index: i+1)
             btn.tag = 500+i
             btn.addTarget(self, action: #selector(clickBtn(_:)), forControlEvents: .TouchUpInside)
             
-            
             contentView.addSubview(btn)
-            
             
         }
         
@@ -450,7 +434,7 @@ class FCSerialBtn: UIControl{
             
             
             }else if clicked == false{
-                backgroundColor = UIColor.lightGrayColor()
+                backgroundColor = UIColor.init(white: 0.8, alpha: 1.0)
                 
                 titleLabel?.textColor = UIColor.grayColor()
                 
@@ -463,17 +447,12 @@ class FCSerialBtn: UIControl{
     
     init(frame: CGRect, index: Int) {
         super.init(frame: frame)
-        
-        
-        
         titleLabel = UILabel.createLabel("\(index)", font: UIFont.systemFontOfSize(12), textAligment: .Center, textColor: UIColor.blackColor())
+        
         titleLabel?.frame = self.bounds
         
         addSubview(titleLabel!)
-        
-        
-        backgroundColor = UIColor.init(white: 0.8, alpha: 1)
-        
+        backgroundColor = UIColor.init(white: 0.8, alpha: 1.0)
     }
     
     required init?(coder aDecoder: NSCoder) {

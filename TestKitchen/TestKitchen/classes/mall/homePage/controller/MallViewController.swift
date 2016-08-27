@@ -9,7 +9,7 @@
 
 import UIKit
 
-class MallViewController: BaseViewController {
+class MallViewController: KTCHomeViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
